@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Skin Lesion Classification System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+        🩺 Skin Lesion Classification System
+    </h1>
+
+    <p class="subtitle">
+        Deep Learning Based Skin Cancer Detection
+    </p>
+
+    <!-- SINGLE IMAGE PREDICTION -->
+
+    <div class="card">
+
+        <h2>Single Image Prediction</h2>
+
+        <form
+            action="/predict"
+            method="POST"
+            enctype="multipart/form-data">
+
+            <input
+                type="text"
+                name="patient_name"
+                placeholder="Patient Name"
+                required>
+
+            <br><br>
+
+            <input
+                type="number"
+                name="patient_age"
+                placeholder="Patient Age"
+                required>
+
+            <br><br>
+
+            <input
+                type="file"
+                name="image"
+                accept="image/*"
+                required>
+
+            <br><br>
+
+            <button type="submit">
+                Predict
+            </button>
+
+        </form>
+
+    </div>
+
+    <br><br>
+
+    <!-- MULTIPLE IMAGE PREDICTION -->
+
+    <div class="card">
+
+        <h2>Multiple Image Prediction</h2>
+
+        <form
+            action="/batch_predict"
+            method="POST"
+            enctype="multipart/form-data">
+
+            <input
+                type="text"
+                name="patient_name"
+                placeholder="Patient Name"
+                required>
+
+            <br><br>
+
+            <input
+                type="number"
+                name="patient_age"
+                placeholder="Patient Age"
+                required>
+
+            <br><br>
+
+            <input
+                type="file"
+                name="images"
+                multiple
+                accept="image/*"
+                required>
+
+            <br><br>
+
+            <button type="submit">
+                Analyze Images
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

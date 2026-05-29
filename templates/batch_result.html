@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<title>Batch Prediction Results</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+```
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<h1>📊 Batch Prediction Results</h1>
+
+<br>
+
+{% set benign_count = namespace(value=0) %}
+{% set malignant_count = namespace(value=0) %}
+
+<table border="1"
+       cellpadding="10"
+       cellspacing="0"
+       style="margin:auto;
+              border-collapse:collapse;
+              width:90%;
+              background:white;">
+
+    <tr style="background:#2563eb;color:white;">
+
+        <th>Image Name</th>
+        <th>Prediction</th>
+        <th>Confidence (%)</th>
+        <th>Risk Level</th>
+
+    </tr>
+
+    {% for result in results %}
+
+    <tr>
+
+        <td>
+            {{ result.filename }}
+        </td>
+
+        <td>
+
+            {% if result.prediction == "Benign" %}
+
+                {% set benign_count.value =
+                benign_count.value + 1 %}
+
+                <span style="color:green;
+                             font-weight:bold;">
+                    {{ result.prediction }}
+                </span>
+
+            {% else %}
+
+                {% set malignant_count.value =
+                malignant_count.value + 1 %}
+
+                <span style="color:red;
+                             font-weight:bold;">
+                    {{ result.prediction }}
+                </span>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+            {{ result.confidence }} %
+        </td>
+
+        <td>
+
+            {% if result.prediction == "Benign" %}
+
+                <span style="color:green;">
+                    Low Risk
+                </span>
+
+            {% else %}
+
+                <span style="color:red;">
+                    High Risk
+                </span>
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<br><br>
+
+<div class="card">
+
+    <h2>📋 Summary Report</h2>
+
+    <p>
+        <strong>Total Images:</strong>
+        {{ results|length }}
+    </p>
+
+    <p>
+        <strong>Benign Cases:</strong>
+        <span style="color:green;">
+            {{ benign_count.value }}
+        </span>
+    </p>
+
+    <p>
+        <strong>Malignant Cases:</strong>
+        <span style="color:red;">
+            {{ malignant_count.value }}
+        </span>
+    </p>
+
+</div>
+
+<br>
+
+<div class="card">
+
+    <h2>🩺 AI Observation</h2>
+
+    {% if malignant_count.value > 0 %}
+
+    <p>
+
+        One or more uploaded skin lesion
+        images show characteristics
+        associated with malignant lesions.
+
+    </p>
+
+    <p>
+
+        Further dermatological evaluation
+        is recommended.
+
+    </p>
+
+    {% else %}
+
+    <p>
+
+        All uploaded skin lesion images
+        appear benign.
+
+    </p>
+
+    <p>
+
+        Regular monitoring and periodic
+        skin examination are recommended.
+
+    </p>
+
+    {% endif %}
+
+</div>
+<br><br>
+
+<div class="card">
+
+    <h2>📊 Prediction Distribution</h2>
+
+    <img
+        src="/{{ chart_path }}"
+        width="400">
+
+</div>
+
+<br>
+<a  href="{{ pdf_path }}" download>
+
+    <button
+         style="
+        background:green;
+        color:white;
+        padding:12px 25px;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;">
+        📄 Download PDF Report
+    </button>
+
+</a>
+<a href="/">
+
+    <button>
+        Back To Home
+    </button>
+
+</a>
+
+
+</div>
+
+</body>
+
+</html>

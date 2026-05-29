@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Skin Lesion Analysis Report</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+        🩺 Skin Lesion Analysis Report
+    </h1>
+
+    <br>
+
+    <!-- PATIENT DETAILS -->
+
+    <div class="card">
+
+        <h2>Patient Information</h2>
+
+        <p>
+            <strong>Name:</strong>
+            {{ patient_name }}
+        </p>
+
+        <p>
+            <strong>Age:</strong>
+            {{ patient_age }}
+        </p>
+
+    </div>
+
+    <br>
+
+    <!-- IMAGE -->
+
+    <div class="card">
+
+        <h2>Uploaded Image</h2>
+
+        <img src="/{{ image_path }}"
+             width="400">
+
+    </div>
+
+    <br>
+
+    <!-- PREDICTION -->
+
+    <div class="card">
+
+        <h2>Prediction Result</h2>
+
+        <h3>
+
+            Prediction :
+
+            {% if prediction == "Malignant" %}
+
+                <span style="color:red;">
+                    {{ prediction }}
+                </span>
+
+            {% else %}
+
+                <span style="color:green;">
+                    {{ prediction }}
+                </span>
+
+            {% endif %}
+
+        </h3>
+
+        <h3>
+            Confidence :
+            {{ confidence }}
+        </h3>
+
+        <h3>
+
+            Risk Level :
+
+            {% if risk_level == "High Risk" %}
+
+                <span style="color:red;">
+                    {{ risk_level }}
+                </span>
+
+            {% else %}
+
+                <span style="color:green;">
+                    {{ risk_level }}
+                </span>
+
+            {% endif %}
+
+        </h3>
+
+    </div>
+
+    <br>
+
+    <!-- AI OBSERVATION -->
+
+    <div class="card">
+
+        <h2>AI Observation</h2>
+
+        {% if prediction == "Malignant" %}
+
+        <p>
+
+            The uploaded skin lesion shows
+            characteristics associated with
+            malignant skin lesions.
+
+        </p>
+
+        <p>
+
+            It is recommended to consult a
+            qualified dermatologist for
+            further medical evaluation.
+
+        </p>
+
+        {% else %}
+
+        <p>
+
+            The uploaded skin lesion appears
+            to have benign characteristics.
+
+        </p>
+
+        <p>
+
+            Regular skin monitoring is
+            recommended.
+
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    <br>
+    
+
+    <!-- BUTTONS -->
+    <a href="/{{ pdf_path }}" download>
+
+        <button>
+            Download PDF Report
+        </button>
+
+    </a>
+
+    <a href="/">
+
+        <button>
+            Back To Home
+        </button>
+
+    </a>
+    
+
+</div>
+
+</body>
+
+</html>
