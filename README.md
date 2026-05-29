@@ -27,29 +27,36 @@ Detect Benign and Malignant Skin Lesions using ResNet18 and Flask
 
 ---
 
-## 📌 Overview
 
-SkinLesionAI is an intelligent healthcare application that uses Deep Learning and Computer Vision techniques to classify skin lesion images into **Benign** and **Malignant** categories.
 
-The system allows users to upload single or multiple dermoscopic images and receive automated predictions, confidence scores, risk assessments, AI observations, PDF reports, and visual analytics.
+## 📌 Project Overview
+
+SkinLesionAI is a web-based healthcare application developed to assist in the preliminary analysis of skin lesion images using Deep Learning. The system utilizes a fine-tuned ResNet18 model trained on skin lesion datasets to classify images into two categories: **Benign** and **Malignant**.
+
+The application provides a user-friendly interface where users can upload either a single skin lesion image or multiple images simultaneously for analysis. After processing the uploaded images, the model generates predictions along with confidence scores and risk assessments. To improve usability, the system automatically creates detailed PDF reports containing patient information, prediction results, confidence levels, and medical observations.
+
+For batch analysis, the application generates summary statistics and visual analytics in the form of pie charts, allowing users to quickly understand the distribution of benign and malignant cases among uploaded images. The system also includes error handling mechanisms to prevent failures when unsupported or corrupted images are uploaded.
+
+The primary objective of this project is to demonstrate the practical application of Deep Learning in medical image analysis while providing an easy-to-use platform that combines image classification, automated reporting, and healthcare-oriented visualization within a single Flask-based web application.
+
+This project was developed using Python, Flask, PyTorch, ReportLab, and Matplotlib, integrating machine learning and web technologies to create an end-to-end intelligent diagnostic support system.
+
 
 ---
 
-## 🚀 Features
-
-* ✅ Single Image Prediction
-* ✅ Multiple Image Analysis
-* ✅ Benign vs Malignant Classification
-* ✅ Deep Learning using ResNet18
-* ✅ Confidence Score Calculation
-* ✅ Risk Level Assessment
-* ✅ AI-Based Medical Observation
-* ✅ Patient Name & Age Input
-* ✅ PDF Report Generation
-* ✅ Batch PDF Report Export
-* ✅ Pie Chart Analytics
-* ✅ Invalid Image Handling
-* ✅ Flask-Based Interactive UI
+🚀 Key Features
+Deep Learning-based skin lesion classification using a trained ResNet18 model.
+Single image prediction with confidence score generation.
+Multiple image batch analysis for simultaneous lesion evaluation.
+Automatic classification into Benign and Malignant categories.
+Risk level assessment based on prediction results.
+AI-generated medical observation summaries.
+Patient information management including name and age.
+Automatic PDF report generation for individual predictions.
+Batch PDF report generation for multiple image analyses.
+Pie chart visualization showing lesion distribution.
+Secure image upload and validation mechanisms.
+Flask-based responsive web interface for easy accessibility.
 
 ---
 
@@ -165,65 +172,7 @@ The application automatically generates:
 
 ---
 
-## ⚙️ Installation
 
-### Clone Repository
-
-```bash
-git clone https://github.com/YOUR_USERNAME/SkinLesionAI.git
-```
-
-### Move to Project Directory
-
-```bash
-cd SkinLesionAI
-```
-
-### Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### Run Application
-
-```bash
-python app.py
-```
-
-### Open Browser
-
-```text
-http://127.0.0.1:5000
-```
-
----
-
-## 🌐 Deployment
-
-This project can be deployed on:
-
-* Render
-* Railway
-* Hugging Face Spaces
-* AWS EC2
-* Azure App Service
-
-### Render Deployment
-
-Build Command
-
-```bash
-pip install -r requirements.txt
-```
-
-Start Command
-
-```bash
-gunicorn app:app
-```
-
----
 
 ## 📊 Future Enhancements
 
@@ -235,25 +184,6 @@ gunicorn app:app
 * Multi-Class Skin Disease Detection
 * Cloud Database Integration
 
----
-
-## 👨‍💻 Author
-
-### Pranshu Agrahari
-
-Data Analyst | Machine Learning Enthusiast | AI Developer
-
-**Skills**
-
-* Python
-* Flask
-* Machine Learning
-* Deep Learning
-* Power BI
-* Data Analytics
-
-
----
 
 ## ⭐ Support
 
@@ -267,8 +197,3 @@ If you found this project useful:
 
 ---
 
-<div align="center">
-
-### Made with ❤️ using Flask, PyTorch and Deep Learning
-
-</div>
