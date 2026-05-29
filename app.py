@@ -21,30 +21,38 @@ from utils.report_generator import (
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = "static/uploads"
+BASE_DIR = os.path.dirname(
+    os.path.abspath(__file__)
+)
+
+UPLOAD_FOLDER = os.path.join(
+    BASE_DIR,
+    "static",
+    "uploads"
+)
 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(
-    "static/uploads",
+    UPLOAD_FOLDER,
     exist_ok=True
 )
 
 os.makedirs(
-    "static/reports",
+    os.path.join(BASE_DIR, "static", "reports"),
     exist_ok=True
 )
 
 os.makedirs(
-    "static/charts",
+    os.path.join(BASE_DIR, "static", "charts"),
     exist_ok=True
 )
-
 # ==================================================
 # LOAD MODEL ONCE
 # ==================================================
-
+print("APP STARTED")
 model = load_model()
 
+print("MODEL LOADED")
 # ==================================================
 # HOME PAGE
 # ==================================================
