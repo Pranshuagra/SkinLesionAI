@@ -24,6 +24,20 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "static/uploads"
 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+os.makedirs(
+    "static/uploads",
+    exist_ok=True
+)
+
+os.makedirs(
+    "static/reports",
+    exist_ok=True
+)
+
+os.makedirs(
+    "static/charts",
+    exist_ok=True
+)
 
 # ==================================================
 # LOAD MODEL ONCE
