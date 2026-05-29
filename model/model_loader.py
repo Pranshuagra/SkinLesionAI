@@ -1,11 +1,17 @@
-# model/model_loader.py
-
+import os
 import torch
 import torch.nn as nn
 
 from torchvision import models
 
-MODEL_PATH = r"model\best_resnet18_skin_lesion.pth"
+BASE_DIR = os.path.dirname(
+    os.path.abspath(__file__)
+)
+
+MODEL_PATH = os.path.join(
+    BASE_DIR,
+    "best_resnet18_skin_lesion.pth"
+)
 
 device = torch.device("cpu")
 
