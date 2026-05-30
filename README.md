@@ -15,7 +15,7 @@ Detect Benign and Malignant Skin Lesions using ResNet18 and Flask
 
 ---
 
-## 🎥 Demo
+##  Demo LInk
 
 <p align="center">
 
@@ -23,7 +23,7 @@ Detect Benign and Malignant Skin Lesions using ResNet18 and Flask
 
 </p>
 
-> Replace the GIF above with your project demo recording.
+> You can check website using this link: https://huggingface.co/spaces/29Pranshu/skinlesionai
 
 ---
 
